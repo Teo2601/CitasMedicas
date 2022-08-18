@@ -1,12 +1,17 @@
 package model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Doctor  extends User{ // Subclase heredan atributos de la super clase model.User
-    //Atributos
-
+public class Doctor extends User {
+    //Atributo
     private String speciality;
+
+    public Doctor(String name, String email){
+        super(name,email);
+    }
 
     public String getSpeciality() {
         return speciality;
@@ -16,41 +21,40 @@ public class Doctor  extends User{ // Subclase heredan atributos de la super cla
         this.speciality = speciality;
     }
 
-    public Doctor(String name, String email){ //Metodo constructor
-        super(name,email); //Del metodo constructor de la clase padre model.User
-        System.out.println("El nombre del model.Doctor asignado es: " + name);
-        this.speciality = speciality;  //// asignacion de variables
+
+    ArrayList<AvailableAppointment> availableAppointments = new ArrayList<>();
+    public void addAvailableAppointment(String date, String time){
+        availableAppointments.add(new Doctor.AvailableAppointment(date,time));
     }
 
-    ArrayList<AvailableAppointment>AvailableAppointment = new ArrayList<>(); // se acumulan las citas en el Arraylist
-    public void addAvailableAppointment (Date date, String time){ // Metodo que va a estar añadiendo citas
-        AvailableAppointment.add(new Doctor.AvailableAppointment(date,time));
-
-     }
-     public ArrayList<AvailableAppointment> getAvailableAppointment(){ // Devuelve la lista completa de citas
-        return AvailableAppointment;
-
-     }
-    //Sobrescribir
-
-    @Override
-    public String toString() { //Este metodo no es propio de la clase user, es un metod extraido de la super clase padre
-        return super.toString()+ "\nSpeciality: "+speciality+ "\nAvailable: "  + AvailableAppointment.toString();// Se reutiliza el comportamiento que esta definido en la supérclase (model.User)
+    public ArrayList<AvailableAppointment> getAvailableAppointments(){
+        return availableAppointments;
     }
 
     @Override
-    public void showDataUser() { //Metodo obligatorio de abstracto
-        System.out.println("Empleado del Hospital: Cruz Roja");
-        System.out.println("Departamento: Cancerologia");
+    public String toString() {
+        return super.toString() + "\nSpeciality: " + speciality + "\nAvailable: " + availableAppointments.toString();
     }
 
-    public static  class AvailableAppointment { // Clase anidada
+    @Override
+    public void showDataUser() {
+        System.out.println("Empleado del Hospital: CRuz Roja");
+        System.out.println("Departamento: Cancerología");
+    }
+
+
+    public static class AvailableAppointment{
         private int id;
         private Date date;
         private String time;
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-        public AvailableAppointment(Date date, String time) {
-            this.date = date;
+        public AvailableAppointment(String date, String time) {
+            try {
+                this.date = format.parse(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             this.time = time;
         }
 
@@ -66,6 +70,12 @@ public class Doctor  extends User{ // Subclase heredan atributos de la super cla
             return date;
         }
 
+        public String getDate(String DATE) {
+            return format.format(date);
+        }
+
+
+
         public void setDate(Date date) {
             this.date = date;
         }
@@ -77,10 +87,11 @@ public class Doctor  extends User{ // Subclase heredan atributos de la super cla
         public void setTime(String time) {
             this.time = time;
         }
-        //Sobrescribir
-        @Override //Este metodo no es propio de la clase user, es un metod extraido de la super clase padre
+
+
+        @Override
         public String toString() {
-            return "Available Appointments \nDate: "+date+ "\nTime" + time; //Imprimir el titulo y los datos solicitados
+            return "Available Appointments \nDate: " +date+ "\nTime: " + time;
         }
     }
 

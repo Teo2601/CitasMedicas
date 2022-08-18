@@ -2,6 +2,7 @@ package ui;
 
 import model.Doctor;
 import model.patient;
+import static ui.UIMenu.showMenu;
 
 import javax.print.Doc;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class UIMenu {
 
         int response = 0;
         do {
-            System.out.println("1. model.Doctor");
+            System.out.println("1. Doctor");
             System.out.println("2. Patient");
             System.out.println("0. Salir");
 
@@ -70,7 +71,7 @@ public class UIMenu {
                     emailCorrect = true;
                     //Obtener el usuario logeado
                     doctorLogged = d;
-                    //ShowDoctorMenu
+                    UIDoctorMenu.showDoctorMenu();
 
                 }
             }

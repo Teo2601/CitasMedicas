@@ -2,14 +2,26 @@ import model.*;
 
 import java.util.Date;
 
+import static ui.UIMenu.showMenu;
+
 public class Main {
     public static void main(String[] args) {
+        showMenu();
 
-        /*model.Doctor myDoctor = new model.Doctor();*/ //Metodo constructor
+    }
 
-        /*showMenu();*/
 
-        Doctor mydoctor = new Doctor("Mateo Siachoque Passos", "mateo@mateo.com"); //Metodo constructor
+
+}
+
+
+
+
+/*model.Doctor myDoctor = new model.Doctor();*/ //Metodo constructor
+
+
+
+       /* Doctor mydoctor = new Doctor("Mateo Siachoque Passos", "mateo@mateo.com"); //Metodo constructor
         mydoctor.addAvailableAppointment(new Date(), "4pm");
         mydoctor.addAvailableAppointment(new Date(), "10am");
         mydoctor.addAvailableAppointment(new Date(), "1pm");
@@ -39,18 +51,12 @@ public class Main {
         for (model.Doctor.AvailableAppointment availableAppointment : mydoctor.getAvailableAppointment()) { // Mostrar citas disponibles que el doctor tiene
             System.out.println(availableAppointment.getDate() + " " + availableAppointment.getTime());
         }*/
-        System.out.println();
+       /* System.out.println();
         System.out.println();
         patient patient= new patient("alejandra", "alejandra@gamil.com");
-        System.out.println(patient);
+        System.out.println(patient);*/
 
 
-
-    }
-
-
-
-}
 
 
 

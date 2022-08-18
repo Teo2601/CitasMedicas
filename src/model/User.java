@@ -62,5 +62,5 @@ public abstract class User {  //Super Clase
                 "\nAddreess: "+address+".Phone: "+phoneNumber;
 
     }
-    public abstract void showDataUser ();
+    public abstract void showDataUser (); //Metodo que sea abstracto
 }

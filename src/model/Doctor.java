@@ -39,7 +39,7 @@ public class Doctor  extends User{ // Subclase heredan atributos de la super cla
     }
 
     @Override
-    public void showDataUser() {
+    public void showDataUser() { //Metodo obligatorio de abstracto
         System.out.println("Empleado del Hospital: Cruz Roja");
         System.out.println("Departamento: Cancerologia");
     }
